@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0 ;
+    }
+  </style>
+</head>
+<body>
+  <script>
+
+
+let root = document.createElement('div');//div로 루트요소 생성
+document.body.appendChild(root); //문서.바디.자식으로 루트추가
+root.setAttribute('id', 'root'); //생성한 루트 요소에 id값을 root로 준다
+
+//console.dir(root);
+
+//root아래 div4개
+for(let i = 0; i<3; i++) {
+  let makeDiv =document.createElement('div');
+  root.appendChild(makeDiv);
+}
+
+let header = root.children[0];
+let content = root.children[1];
+let footer = root.children[2];
+
+console.dir(root.children[0]);
+
+//console.log(root.children);
+//header.setAttribute('id','header');
+
+console.dir(root);
+
+function rootBox(rootWidth, rootHeight, rootbackgroundcolor, rootPosition) {
+  root.style.width = rootWidth;
+  root.style.height = rootHeight;
+  root.style.backgroundColor =rootbackgroundcolor;
+  root.style.position = rootPosition;
+  }
+  rootBox("100vw", "100vh","flex", "#ffe4c4","relative");
+
+function headerBox(headWidth, headHeight, headbackgroundcolor){
+  header.style.width = headWidth;
+  header.style.height = headHeight;
+  header.style.backgroundColor = headbackgroundcolor; 
+}
+  headerBox("30%","80%","#faebd7");
+
+
+function contentBox(conWidth, conHeight, conbackgroundColor, conPosition, conTop, conLeft){
+  content.style.width = conWidth;
+  content.style.height = conHeight;
+  content.style.backgroundColor = conbackgroundColor;
+  content.style.position = conPosition;
+  content.style.top = conTop;
+  content.style.left = conLeft;
+}
+  contentBox("70%","80%","#f5deb3","absolute","0","338px");
+
+  function footerBox(footWidth, footHeight, footbackgroundColor){
+    footer.style.width = footWidth;
+    footer.style.height = footHeight;
+    footer.style.backgroundColor = footbackgroundColor;
+  }
+    footerBox("100vw", "20%","#d8bfd8");
+
+  </script>
+  
+</body>
+</html>
