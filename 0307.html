@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <!-- <img id="img"> -->
+  <button></button>
+
+  <script>
+    let btn = document.body.children[1];
+    console.dir(btn);
+    btn.style.width = "100px"
+    btn.style.height = "30px"
+    btn.textContent = "랜덤버튼"
+
+    const h1 = document.createElement('h1');
+    const img = document.createElement('img');
+    root.append(h1, img);
+    
+    btn.addEventListener('click',function(){
+
+    const root = document.getElementById('root');
+    // const img = document.getElementById('img');
+    const xhr = new XMLHttpRequest(); //xhr객체 생성
+    
+    const value = Math.floor((Math.random()*1000)) +1 //랜덤값, floor은 소수점 내림
+    
+    console.log(value); 
+
+    console.dir(value);
+    const _URL = `https://pokeapi.co/api/v2/pokemon/${value}`;
+    xhr.open('GET', _URL); 
+    xhr.send();
+
+    xhr.addEventListener('load', function() {
+      console.log(xhr.response);
+      const _PokeData = JSON.parse(xhr.response); //_PokeDate = 요청받은 xhr을 제이슨으로 파스
+      console.log(_PokeData);
+      img.src=_PokeData.sprites.front_default; //콘솔 출력해보면 이미지 경로 나옴
+      
+      name = _PokeData.sprites.name;
+      // const h1 = document.createElement('h1');
+      h1.textContent = _PokeData.name;
+      root.appendChild(h1);
+      console.log(_PokeData);
+    });
+  })
+    console.log(xhr);
+  </script>
+</body>
+</html>
